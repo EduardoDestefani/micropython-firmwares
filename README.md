@@ -124,7 +124,7 @@ Para criar firmare com precisão dupla (FP64) para números de ponto flutuante, 
 
 Para tal comando é necessário que o git clone do ulab seja feito dentro do diretório `micropython/`:
 
-`(base) eduardo@eduardo:~/micropython/$ git clone https://github.com/v923z/micropython-ulab.git ulab`
+`git clone https://github.com/v923z/micropython-ulab.git ulab`
 
 A partir daí tivemos o problema de memória do Pyboard-D SF2-3 para sustentar o ulab na flash interna. Porém, no fórum micropython, temos outra solução publicada por um usuário no tópico ulab, "or what you will - numpy on bare metal". Adicionamos a linha 51 de `micropython/ports/stm32/boards/PYBD_SF2/f722_qspi.ld` o comando:
 
@@ -132,7 +132,11 @@ A partir daí tivemos o problema de memória do Pyboard-D SF2-3 para sustentar o
 
 Logo, no diretório `~/micropython/ports/stm32`, executamos tal comando abaixo para construir o firmware MicroPython + ulab:
 
-`(base) eduardo@eduardo-Inspiron-3583:~/micropython/ports/stm32$ make -j8 BOARD=PYBD_SF2 USER_C_MODULES=../../ulab all`
+`make -j8 BOARD=PYBD_SF2 USER_C_MODULES=../../ulab all`
+
+Para compilar com precisão dupla DP/FP64, execute:
+
+`MICROPY_FLOAT_IMPL=double BOARD=PYBD_SF2 USER_C_MODULES=../../ulab all`
 
 Certifique-se que houve a compilação do módulo ulab no log de compilação do terminal:
 
