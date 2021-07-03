@@ -136,7 +136,7 @@ Logo, no diretório `~/micropython/ports/stm32`, executamos tal comando abaixo p
 
 Para compilar com precisão dupla DP/FP64, execute:
 
-`MICROPY_FLOAT_IMPL=double BOARD=PYBD_SF2 USER_C_MODULES=../../ulab all`
+`make -j8 MICROPY_FLOAT_IMPL=double BOARD=PYBD_SF2 USER_C_MODULES=../../ulab all`
 
 Certifique-se que houve a compilação do módulo ulab no log de compilação do terminal:
 
