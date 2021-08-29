@@ -1,6 +1,12 @@
 # micropython-firmwares
 Repositório de Firmwares personalizados.
 
+### Instalação dos firmwares em Pyboard D-series
+
+Para saber como instalar os firmwares do repositório, basta executar tais comandos com o Pyboard-D no modo "dfu". O comando deve ser executado no mesmo diretório em que os arquivos [pydfu.py](https://github.com/EduardoDestefani/micropython-firmwares/blob/master/Firmwares%20Pyboard-D%20SF2/pydfu.py) e 'firmware.dfu' estão, comando:
+
+`sudo python3 pydfu.py -u firmware_name.dfu`
+
 ### Firmwares STM32 placas Pyboard-D SF2
 Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20Pyboard-D%20SF2).
 
@@ -13,8 +19,7 @@ Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-fi
 - `pybd-sf2_sp_v1.16-39-g4ada56d4c-ulab_v3.1.1-2D-20210703.dfu`; firmware com precisão simples nativa (Pyboard-D SF2 possui suporte em hardware apenas para FP32/SP). MicroPython v1.16 e ulab v3.1.1-2D.
 - `pybd-sf2_dp_v1.16-39-g4ada56d4c-ulab_v3.1.1-2D-20210703.dfu`; firmware com precisão dupla nativa (Pyboard-D SF2 possui suporte em hardware apenas para FP32/SP). MicroPython v1.16 e ulab v3.1.1-2D.
 
-Os arquivos 'firmware.dfu' são gerados em 'micropython/ports/stm32/build-PYBD_SF2/'. 
-Utilize o comando `sudo python3 pydfu.py -u nome_do_firmware.dfu`, instale o firmware em sua placa.
+Os arquivos 'firmware.dfu' são gerados em 'micropython/ports/stm32/build-PYBD_SF2/'.
 
 ### Firmwares STM32 placas Pyboard-D SF3
 Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20Pyboard-D%20SF3).
@@ -122,7 +127,7 @@ Para criar firmare com precisão dupla (FP64) para números de ponto flutuante, 
     GEN build-PYBD_SF2/firmware.hex
 ```
 
-##### 1.1.3. Compilando o ulab no firmware MicroPython para Pyboard-D SF2
+##### 1.1.3. Compilando o [ulab](https://github.com/v923z/micropython-ulab#ulab) no firmware MicroPython para Pyboard-D SF2
 
 Para tal comando é necessário que o git clone do ulab seja feito dentro do diretório `micropython/`:
 
