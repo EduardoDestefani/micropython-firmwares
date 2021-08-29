@@ -7,7 +7,7 @@ Para saber como instalar os firmwares do repositório, basta executar tais coman
 
 `sudo python3 pydfu.py -u firmware_name.dfu`
 
-### Firmwares STM32 placas Pyboard-D SF2
+### Firmwares STM32 placas Pyboards-D SF2
 Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20Pyboard-D%20SF2).
 
 - `pybd-sf2_dp_v1.12-665-g60f5b941e_2020-08-22.dfu` ; firmware com precisão dupla nativa (Pyboard-D SF2 possui suporte em hardware apenas para FP32/SP).  
