@@ -99,7 +99,7 @@ Após realizar os passos de [~/stm e gcc-arm](https://github.com/micropython/mic
     Use make V=1 or set BUILD_VERBOSE in your environment to increase build verbosity.
     Updating submodules: lib/lwip lib/mbedtls lib/mynewt-nimble lib/stm32lib
 ```
-##### 1.1. Criando firmware para Pyboard-D SF2 com configuração default (FP32, sem threads)
+#### 1.1. Criando firmware para Pyboard-D SF2 com configuração default (FP32, sem threads)
 O 'make clean' da placa é recomendado a necessário toda vez que for criar firmware, senão gera erros bem difíceis de  entender, então sempre use `make clean` da placa MicroPython antes do `make` principal:  
 ```
 (base) eduardo@eduardo:~/micropython/ports/stm32$ make BOARD=PYBD_SF2 clean
