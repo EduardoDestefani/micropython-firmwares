@@ -1,7 +1,7 @@
 # micropython-firmwares
 Repositório de Firmwares personalizados.
 
-### Instalação dos firmwares em Pyboard D-series
+## Instalação dos firmwares em Pyboard D-series
 
 Para saber como instalar os firmwares do repositório, basta executar tais comandos com o Pyboard-D no modo "dfu". O comando deve ser executado no mesmo diretório em que os arquivos [pydfu.py](https://github.com/EduardoDestefani/micropython-firmwares/blob/master/Firmwares%20Pyboard-D%20SF2/pydfu.py) e 'firmware.dfu' estão, comando:
 
@@ -85,7 +85,7 @@ $ ./micropython
      >>>
 ```
 
-#### 1. Compilando micropython/ports/stm32 (para placas Pyboard, etc)
+### 1. Compilando micropython/ports/stm32 (para placas Pyboard, etc)
 Escolhemos a [placa Pyboard D SF2](https://store.micropython.org/product/PYBD-SF2-W4F2), definida em 'micropython/ports/stm32/boards/PYBD_SF2', tal que `BOARD=PYBD_SF2`.  
 Mas há outras placas MicroPython oficiais, como Pyboard v1.1 (PYBV11), Pyboard Lite v1.0 (PYBLITEV10), Pyboard D SF33 (PYBD_SF3) e Pyboard D SF6 (PYBD_SF6), Espruino Pico (ESPRUINO_PICO), etc. Bem como várias placas STM32 com MicroPython definido pela comunidade, porém com menos surporte, menos recursos funcionando, menos estáveis.
 
@@ -118,7 +118,7 @@ Compilando e criando firmware, gasta alguns poucos minutos:
     GEN build-PYBD_SF2/firmware.dfu
     GEN build-PYBD_SF2/firmware.hex
 ```
-##### 1.1.2. Criando firmware para Pyboard-D SF2 com configuração FP64, sem threads
+#### 1.1.2. Criando firmware para Pyboard-D SF2 com configuração FP64, sem threads
 
 Para criar firmare com precisão dupla (FP64) para números de ponto flutuante, vide 
 [MicroPython v1.12 firmwares for Pyboard v1.1/Lite v1.0/D SF2/D SF3/D SF6 - Optional) Building firmware with 'make' options](https://gitlab.com/rcolistete/micropython-firmwares/-/tree/master/Pyboard/v1.12/2020-07-26#optional-building-firmware-with-make-options), ou seja, repetir 1.1., porém no comando `make` adicionar a opção `MICROPY_FLOAT_IMPL=double` :
@@ -134,7 +134,7 @@ Para criar firmare com precisão dupla (FP64) para números de ponto flutuante, 
     GEN build-PYBD_SF2/firmware.hex
 ```
 
-##### 1.1.3. Compilando o [**ulab**](https://github.com/v923z/micropython-ulab#ulab) no firmware MicroPython para Pyboard-D SF2
+#### 1.1.3. Compilando o [**ulab**](https://github.com/v923z/micropython-ulab#ulab) no firmware MicroPython para Pyboard-D SF2
 
 Para tal comando é necessário que o git clone do ulab seja feito dentro do diretório `micropython/`:
 
