@@ -50,7 +50,7 @@ Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-fi
 Os arquivos 'firmware.hex' (.bin, .elf) são gerados em 'micropython/ports/nrf/build-microbit/'.
 Pegue o arquivo '.hex' e arraste para o pseudo pendrive "MICROBIT".
 
-### Construção dos firmwares ulab para placas Pyboard
+## Construção dos firmwares ulab para placas Pyboard
 No Debian e derivados o gcc-arm é muito antigo (5.x) no repositório oficial. Então instalar manualmente gcc-arm atual, seguir ["Getting Started STM"](https://github.com/micropython/micropython/wiki/Getting-Started-STM). A versão escolhida foi a [gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads).
 
 Adicionar ao final do arquivo .bashrc (execute `sudo nano ~/.bashrc`) :
