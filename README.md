@@ -39,6 +39,7 @@ Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-fi
 Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20Pyboard%20v1.1).
 
 - `pyb-v1.1_sp_v1.17-39-g4ada56d4c-ulab_v3.3.4-2D-20210918.dfu`; firmware com precisão *simples* nativa (Pyboard v1.1 possui suporte em hardware apenas para FP32/SP). **MicroPython v1.17** e **ulab v3.3.4-2D**.
+- `pyb-v1.1_dp_v1.17-39-g4ada56d4c-ulab_v3.3.4-2D-20210918.dfu`; firmware com precisão *dupla* nativa (Pyboard v1.1 possui suporte em hardware apenas para FP32/SP). **MicroPython v1.17** e **ulab v3.3.4-2D**.
 
 ### Firmwares nRF placas BBC Micro:bit
 Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20BBC%20Microbit).
