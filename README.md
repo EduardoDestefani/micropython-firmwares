@@ -55,7 +55,7 @@ No Debian e derivados o gcc-arm é muito antigo (5.x) no repositório oficial. E
 
 Adicionar ao final do arquivo .bashrc (execute `sudo nano ~/.bashrc`) :
 
-`export PATH="${PATH}:${HOME}/stm/gcc-arm-none-eabi-9-2020-q2-update/bin`
+`export PATH="${PATH}:${HOME}/stm/gcc-arm-none-eabi-9-2020-q2-update/bin"`
 
 Outras dependências são necessárias, recomenda-se instalar uma a uma, e então executar um `sudo apt-get update`. Logo, execute :
 
