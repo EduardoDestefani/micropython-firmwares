@@ -47,6 +47,14 @@ Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-fi
 
 - `pyb-v1.1_sp_v1.17-39-g4ada56d4c-ulab_v3.3.4-2D-20210918.dfu`; firmware com precisão *simples* nativa (Pyboard v1.1 possui suporte em hardware apenas para FP32/SP). **MicroPython v1.17** e **ulab v3.3.4-2D**.
 - `pyb-v1.1_dp_v1.17-39-g4ada56d4c-ulab_v3.3.4-2D-20210918.dfu`; firmware com precisão *dupla* nativa (Pyboard v1.1 possui suporte em hardware apenas para FP32/SP). **MicroPython v1.17** e **ulab v3.3.4-2D**.
+- `pyb-v1.1_sp_v1.18-99-g203ec8ca7-ulab_v5.0.1-2D-20220205.dfu`; firmware com precisão *simples* nativa (Pyboard-D SF2 possui suporte em hardware apenas para FP32/SP). **MicroPython v1.18** e **ulab v5.0.1-2D**.
+- `pyb-v1.1_dp_v1.18-99-g203ec8ca7-ulab_v5.0.1-2D-20220205.dfu`; firmware com precisão *dupla* nativa (Pyboard-D SF2 possui suporte em hardware apenas para FP32/SP). **MicroPython v1.18** e **ulab v5.0.1-2D**.
+
+### Firmwares STM32 para placas Pyboard v1.0
+Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20Pyboard%20v1.0).
+
+- `pyb-v1.0_sp_v1.18-99-g203ec8ca7-ulab_v5.0.1-2D-20220205.dfu`; firmware com precisão *simples* nativa (Pyboard-D SF2 possui suporte em hardware apenas para FP32/SP). **MicroPython v1.18** e **ulab v5.0.1-2D**.
+- `pyb-v1.0_dp_v1.18-99-g203ec8ca7-ulab_v5.0.1-2D-20220205.dfu`; firmware com precisão *dupla* nativa (Pyboard-D SF2 possui suporte em hardware apenas para FP32/SP). **MicroPython v1.18** e **ulab v5.0.1-2D**.
 
 ### Firmwares nRF placas BBC Micro:bit
 Firmwares disponíveis [aqui](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20BBC%20Microbit).
