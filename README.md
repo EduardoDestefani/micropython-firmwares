@@ -194,8 +194,8 @@ GEN build-PYBD_SF2/firmware1.bin
 GEN build-PYBD_SF2/firmware.hex
 GEN build-PYBD_SF2/firmware.dfu
 ```
-Os arquivos 'firmware.dfu' são gerados em 'micropython/ports/stm32/build-PYBD_SFx/'.
+Os arquivos `firmware.dfu` são gerados em `micropython/ports/stm32/build-PYBD_SF*/`.
 
-Para manter o ulab e o Micropython sempre atualizados, execute o comando a seguir dentro do diretório `~/micropython/` (para atualizar a versão do MicroPython) ou `~micropython/ulab/` (para atualizar a versão do ulab):
+Para manter o ulab e o Micropython sempre atualizados, execute o comando a seguir dentro do diretório `~/micropython/` (para atualizar a versão do MicroPython) e/ou `~micropython/ulab/` (para atualizar a versão do ulab):
 
 `git pull`
