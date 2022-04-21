@@ -119,13 +119,9 @@ The board names can be:
 - etc ... (Look at the names of the existing folders in `/micropython/ports/esp32/boards`)
 
 #### 1.1. Creating firmware for ESP32 with FP64 configuration
-To compile double precision (FP64) you need to change the file `micropython/ports/esp32/mpconfigport.h` line 53, from:
+To compile double precision (FP64) you need to change the file `micropython/ports/esp32/mpconfigport.h` **line 53**, from:
 
-`#define MICROPY_FLOAT_IMPL (MICROPY_FLOAT_IMPL_FLOAT)`
-
-to
-
-`#define MICROPY_FLOAT_IMPL (MICROPY_FLOAT_IMPL_DOUBLE)`
+`#define MICROPY_FLOAT_IMPL (MICROPY_FLOAT_IMPL_FLOAT)` to `#define MICROPY_FLOAT_IMPL (MICROPY_FLOAT_IMPL_DOUBLE)`
 
 After editing the file, perform procedures in 1 (run the `. ./esp32-cmake.sh` command in the terminal).
 
