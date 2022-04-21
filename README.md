@@ -31,7 +31,7 @@ For SPIRAM ESP32 boards, available [here](https://github.com/EduardoDestefani/mi
 - `esp32-spiram_sp_v1.18-127-gf46a7140f-ulab_v5.0.1-2D-20220401.bin`; firmware with *simple* precision native, **Micropython v1.18** and **ulab v5.0.1-2d**.
 - `esp32-spiram_dp_v1.18-127-gf46a7140f-ulab_v5.0.1-2D-20220401.bin`; firmware with *double* precision native, **Micropython v1.18** and **ulab v5.0.1-2d**.
 
-Without ulab:
+Without ulab (genric and spiram), same link of ulab firmwares above:
 - `esp32-generic_dp_v1.17-39-g4ada56d4c-20211022.bin`;firmware with *double* precision native, **Micropython v1.17**.
 - `esp32-spiram_dp_v1.17-39-g4ada56d4c-20211022.bin`; firmware with *double* precision native, **Micropython v1.17**.
 - `esp32-generic_dp_v1.18-127-gf46a7140f-20220310.bin`; firmware with *double* precision native, **Micropython v1.18**.
