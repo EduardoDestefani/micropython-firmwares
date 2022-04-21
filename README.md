@@ -63,7 +63,7 @@ Firmwares available [here](https://github.com/EduardoDestefani/micropython-firmw
 
 - `microbit_v1.12-665-g60f5b941e_2020-08-22.hex`; **MicroPython v1.12** and **ulab edited**. It is a firmware with ancient and edited ULAB, we have a few functions of the ulab source code. This is due to the little storage space of the BBC Micro:bit to contain the ulab.
 
-Os arquivos `firmware.hex` (.bin, .elf) são gerados em `micropython/ports/nrf/build-microbit/`. Pegue o arquivo '.hex' e arraste para o pseudo pendrive "MICROBIT".
+The `firmware.hex` files (.bin, .elf) are generated in `micropython/ports/nrf/build-microbit/`. Take the '.hex' file and drag to pseudo pendrive "MICROBIT".
 
 ## Construction of the ulab firmwares for pyboard boards
 In Debian and derivatives the gcc-arm is very old (5.x) in the official repository. So manually install GCC-ARM current, follow ["Getting Started STM"](https://github.com/micropython/micropython/wiki/Getting-Started-STM). The chosen version was the [gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads).
