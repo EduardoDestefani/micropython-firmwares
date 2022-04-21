@@ -52,13 +52,14 @@ Firmwares available [here](https://github.com/EduardoDestefani/micropython-firmw
 - `pyb-v1.1_dp_v1.18-99-g203ec8ca7-ulab_v5.0.1-2D-20220205.dfu`; firmware with *double* precision native, **MicroPython v1.18** and **ulab v5.0.1-2D**.
 
 ### Firmwares STM32 for Pyboard v1.0 boards
-Firmwares available [here](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20Pyboard%20v1.0).
+Firmwares available [here](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20Pyboard%20v1.0). Pyboard v1.0 has hardware support only for FP32/SP, are they:
+
 
 - `pyb-v1.0_sp_v1.18-99-g203ec8ca7-ulab_v5.0.1-2D-20220205.dfu`; firmware with *simple* precision native, **MicroPython v1.18** and **ulab v5.0.1-2D**.
 - `pyb-v1.0_dp_v1.18-99-g203ec8ca7-ulab_v5.0.1-2D-20220205.dfu`; firmware with *double* precision native, **MicroPython v1.18** and **ulab v5.0.1-2D**.
 
 ### Firmwares nRF for BBC Micro:bit
-Firmwares available [here](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20BBC%20Microbit).
+Firmwares available [here](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20BBC%20Microbit). BBC Micro:bit has hardware support only for FP32/SP, are they:
 
 - `microbit_v1.12-665-g60f5b941e_2020-08-22.hex`; **MicroPython v1.12** and **ulab edited**. It is a firmware with ancient and edited ULAB, we have a few functions of the ulab source code. This is due to the little storage space of the BBC Micro:bit to contain the ulab.
 
