@@ -1,6 +1,134 @@
 # micropython-firmwares
 Repository of personalized firmware.
 
+## Installation of Firmwares in ESP32 boards
+To know how to install the repository firmware, just install esptool module:
+
+`pip install esptool`
+
+Then, with the MCU connected to the computer, format the flash memory and install the firmware by following the commands (commands must be run in the same directory where the firmware is):
+
+```
+(base) erosvatis@nucleon-Inspiron-3583:~/firmwares$ esptool.py --port /dev/ttyUSB0 erase_flash
+...
+Chip erase completed successfully in 10.0s
+Hard resetting via RTS pin...
+(base) erosvatis@nucleon-Inspiron-3583:~/firmwares$ esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 firmware.bin 
+...
+Wrote 1478416 bytes (998606 compressed) at 0x00001000 in 88.1 seconds (effective 134.3 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+```
+### Firmwares for ESP32 boards
+Firmwares available [here](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20ESP32%204MB). ESP32 (LOLIN32 and LOLIN32 Pro) has hardware support only for FP32/SP, are they:
+
+- `esp32-generic_sp_v1.18-127-gf46a7140f-ulab_v5.0.1-2D-20220401.bin`; firmware with *simple* precision native, **Micropython v1.18** and **ulab v5.0.1-2d**.
+- `esp32-generic_dp_v1.18-127-gf46a7140f-ulab_v5.0.1-2D-20220401.bin`; firmware with *double* precision native, **Micropython v1.18** and **ulab v5.0.1-2d**.
+
+For SPIRAM ESP32 boards, available [here](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20ESP32%20SPIRAM):
+- `esp32-spiram_sp_v1.18-127-gf46a7140f-ulab_v5.0.1-2D-20220401.bin`; firmware with *simple* precision native, **Micropython v1.18** and **ulab v5.0.1-2d**.
+- `esp32-spiram_dp_v1.18-127-gf46a7140f-ulab_v5.0.1-2D-20220401.bin`; firmware with *double* precision native, **Micropython v1.18** and **ulab v5.0.1-2d**.
+
+Without ulab:
+- `esp32-generic_dp_v1.17-39-g4ada56d4c-20211022.bin`;firmware with *double* precision native, **Micropython v1.17**.
+- `esp32-spiram_dp_v1.17-39-g4ada56d4c-20211022.bin`; firmware with *double* precision native, **Micropython v1.17**.
+- `esp32-generic_dp_v1.18-127-gf46a7140f-20220310.bin`; firmware with *double* precision native, **Micropython v1.18**.
+- `esp32-spiram_dp_v1.18-127-gf46a7140f-20220310.bin`; firmware with *double* precision native, **Micropython v1.18**.
+
+## 1. Construction of the ulab firmwares for ESP32 boards
+In Debian and derivatives the gcc-arm is very old (5.x) in the official repository. So manually install GCC-ARM current, follow ["Getting Started STM"](https://github.com/micropython/micropython/wiki/Getting-Started-STM). The chosen version was the [gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads).
+
+Add to the end of the file .bashrc (execute `sudo nano ~/.bashrc`):
+
+`export PATH="${PATH}:${HOME}/stm/gcc-arm-none-eabi-9-2020-q2-update/bin"`
+
+Other dependencies are required, it is recommended to install one by one, and then perform a `sudo apt-get update`. Then, run:
+
+```
+sudo apt-get install git
+sudo apt-get install build-essential 
+sudo apt-get install libreadline-dev 
+sudo apt-get install libffi-dev 
+sudo apt-get install pkg-config
+```
+After installing the above dependencies. The file below will run all steps for creating the ESP32 + ULAB firmware. To do this, simply create a file with .sh extension and paste the contents below (name the file as "esp32-cmake.sh"):
+
+```
+#!/bin/bash
+
+export BUILD_DIR=$(pwd)
+
+echo "--- CLONING ULAB ---"
+git clone --depth 1 https://github.com/v923z/micropython-ulab.git ulab
+
+echo "--- CLONING MICROPYTHON ---"
+git clone --depth 1 https://github.com/micropython/micropython.git
+
+echo "--- CLONING ESP-IDF ---"
+cd $BUILD_DIR/micropython/
+git clone --depth 1 -b v4.0.2 --recursive https://github.com/espressif/esp-idf.git
+
+echo "--- INSTALL ESP-IDF ---"
+cd $BUILD_DIR/micropython/esp-idf
+./install.sh
+. ./export.sh
+
+echo "--- MPY-CROSS ---"
+cd $BUILD_DIR/micropython/mpy-cross
+make
+
+echo "--- ESP32 SUBMODULES ---"
+cd $BUILD_DIR/micropython/ports/esp32
+make submodules
+
+echo "--- PATCH MAKEFILE ---"
+cp $BUILD_DIR/micropython/ports/esp32/Makefile $BUILD_DIR/micropython/ports/esp32/MakefileOld
+echo "BOARD = GENERIC" > $BUILD_DIR/micropython/ports/esp32/Makefile
+echo "USER_C_MODULES = \$(BUILD_DIR)/ulab/code/micropython.cmake" >> $BUILD_DIR/micropython/ports/esp32/Makefile
+cat $BUILD_DIR/micropython/ports/esp32/MakefileOld >> $BUILD_DIR/micropython/ports/esp32/Makefile
+
+echo "--- MAKE ---"
+make
+```
+The file with the above instructions was created by the founder of ulab, see [link](https://github.com/v923z/micropython-ulab/blob/master/build/esp32-cmake.sh). After you create the file, simply run it in the terminal:
+
+`. ./esp32-cmake.sh`
+
+To create firmwares of other versions for ESP32, as **SPIRAM**, just replace rows 28 to 35 of the `esp32-cmake.sh` file by:
+
+```
+echo "--- PATCH MAKEFILE ---"
+cp $BUILD_DIR/micropython/ports/esp32/Makefile $BUILD_DIR/micropython/ports/esp32/MakefileOld
+echo "BOARD = GENERIC_SPIRAM" > $BUILD_DIR/micropython/ports/esp32/Makefile
+echo "USER_C_MODULES = \$(BUILD_DIR)/ulab/code/micropython.cmake" >> $BUILD_DIR/micropython/ports/esp32/Makefile
+cat $BUILD_DIR/micropython/ports/esp32/MakefileOld >> $BUILD_DIR/micropython/ports/esp32/Makefile
+
+echo "--- MAKE ---"
+make BOARD=GENERIC_SPIRAM
+```
+After saving the file, run the `. ./esp32-cmake.sh` command in the terminal.
+
+After a few minutes, the firmware is created. It is located in the `micropython/ports/esp32/build_BOARD_NAME`. Make sure that the `/build-BOARD_NAME` directory has been created successfully. Inside `/build-BOARD_NAME` Look for **firmware.bin**, this is the firmware file that should be used to install on ESP32. 
+
+The board names can be:
+- GENERIC
+- GENERIC_SPIRAM
+- GENERIC_S2 
+- etc ... (Look at the names of the existing folders in `/micropython/ports/esp32/boards`)
+
+#### 1.1. Creating firmware for ESP32 with FP64 configuration
+To compile double precision (FP64) you need to change the file `micropython/ports/esp32/mpconfigport.h` line 53, from:
+
+`#define MICROPY_FLOAT_IMPL (MICROPY_FLOAT_IMPL_FLOAT)`
+
+to
+
+`#define MICROPY_FLOAT_IMPL (MICROPY_FLOAT_IMPL_DOUBLE)`
+
+After editing the file, perform procedures in 1 (run the `. ./esp32-cmake.sh` command in the terminal).
+
 ## Installation of Firmwares in Pyboard D-Series
 To know how to install the repository firmware, just run such commands with pyboard-d in "DFU" mode. The command below must be executed in the same directory where the pydfu.py and 'firmware.dfu' files are:
 
@@ -19,10 +147,10 @@ Firmwares available [here](https://github.com/EduardoDestefani/micropython-firmw
 - `pybd-sf2_dp_v1.18-99-g203ec8ca7-ulab_v5.0.1-2D-20220205.dfu`; firmware with *double* precision native, **Micropython v1.18** and **ulab v5.0.1-2d**.
 
 Without ulab:
-- `pybd-sf2_dp_v1.12-665-g60f5b941e_2020-08-22.dfu`; firmware with *double* precision native.
-- `pybd-sf2_sp_144mhz_v1.12-665-G60F5B941E_2020-08-22.dfu`; firmware with simple precision (SP) and 144MHz default clock.
-- `pybd-SF2_SP_thread_V1.12-657-G37E1B5C89_2020-08-22.dfu`; firmware allowing multithreading with simple precision (SP).
-- `pybd-SF2_SP_V1.12-665-G60F5B941E_2020-08-22.dfu`; firmware with *simple* precision native.
+- `pybd-sf2_dp_v1.12-665-g60f5b941e_2020-08-22.dfu`; firmware with *double* precision native, **Micropython v1.12**.
+- `pybd-sf2_sp_144mhz_v1.12-665-G60F5B941E_2020-08-22.dfu`; firmware with simple precision (SP) and 144MHz default clock, **Micropython v1.12**.
+- `pybd-SF2_SP_thread_V1.12-657-G37E1B5C89_2020-08-22.dfu`; firmware allowing multithreading with simple precision (SP), **Micropython v1.12**.
+- `pybd-SF2_SP_V1.12-665-G60F5B941E_2020-08-22.dfu`; firmware with *simple* precision native, **Micropython v1.12**.
 
 ### Firmwares STM32 for Pyboard-D SF3 boards
 Firmwares available [here](https://github.com/EduardoDestefani/micropython-firmwares/tree/master/Firmwares%20Pyboard-D%20SF3). Pyboard-D SF3 has hardware support only for FP32/SP, are they:
@@ -76,13 +204,9 @@ Other dependencies are required, it is recommended to install one by one, and th
 
 ```
 sudo apt-get install git
-
 sudo apt-get install build-essential 
-
 sudo apt-get install libreadline-dev 
-
 sudo apt-get install libffi-dev 
-
 sudo apt-get install pkg-config
 ```
 Compiling MicroPython Mainline for [Unix/Linux](https://github.com/micropython/micropython/wiki/Getting-Started):
