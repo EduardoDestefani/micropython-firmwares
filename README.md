@@ -113,9 +113,9 @@ After saving the file, run the `. ./esp32-cmake.sh` command in the terminal.
 After a few minutes, the firmware is created. It is located in the `micropython/ports/esp32/build-BOARD_NAME`. Make sure that the `/build-BOARD_NAME` directory has been created successfully. Inside `/build-BOARD_NAME` Look for **firmware.bin**, this is the firmware file that should be used to install on ESP32. 
 
 The BOARD_NAME can be:
-- GENERIC
-- GENERIC_SPIRAM
-- GENERIC_S2 
+- `GENERIC`
+- `GENERIC_SPIRAM`
+- `GENERIC_S2` 
 - etc ... (Look at the names of the existing folders in `/micropython/ports/esp32/boards`)
 
 #### 1.1. Creating firmware for ESP32 with FP64 configuration
