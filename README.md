@@ -8,7 +8,7 @@ To know how to install the repository firmware, just install esptool module:
 
 Then, with the MCU connected to the computer, format the flash memory and install the firmware by following the commands (commands must be run in the same directory where the firmware is):
 
-```python
+```
 (base) erosvatis@nucleon-Inspiron-3583:~/firmwares$ esptool.py --port /dev/ttyUSB0 erase_flash
 ...
 Chip erase completed successfully in 10.0s
